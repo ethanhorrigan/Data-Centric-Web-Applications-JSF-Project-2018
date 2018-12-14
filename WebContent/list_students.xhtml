@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{studentController.loadStudents()}"></f:event>
+</f:metadata>
+<h:head>
+	<title>Ethan Horrigan - DCW Project 2018/19</title>
+	<h:outputStylesheet library="css" name="tables.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+	<h:button value="Add Student" styleClass="addButton"
+		outcome="add_student" />
+	<h:dataTable value="#{studentController.students}" var="s"
+		styleClass="table" headerClass="table-header"
+		rowClasses="table-add-row, table-even-row">
+
+		<h:column>
+			<f:facet name="header">Student ID</f:facet>
+ 	  #{s.sid}
+	</h:column>
+		<h:column>
+			<f:facet name="header">Course ID</f:facet>
+ 	  #{s.cID}
+	</h:column>
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+ 	  #{s.name}
+	</h:column>
+
+		<h:column>
+			<h:form>
+				<h:commandLink value="All Details"
+					action="#{studentController.loadStudentDetails(s)}" />
+				<a><h:commandLink value="Delete"
+						action="#{studentController.deleteStudent(s)}" /></a>
+			</h:form>
+		</h:column>
+
+	</h:dataTable>
+	<h:form>
+		<a><h:commandLink value="Home" action="index" /></a>
+	</h:form>
+</h:body>
+</html>

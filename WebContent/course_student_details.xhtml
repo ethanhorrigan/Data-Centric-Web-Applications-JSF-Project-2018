@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{courseController.loadCourseStudentDetails(courses)}" />
+</f:metadata>
+
+<h:head>
+	<title>Ethan Horrigan - DCW Project 2018/19</title>
+	<h:outputStylesheet library="css" name="tables.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+	<h3>Course Student Details Page</h3>
+
+	<h:dataTable value="#{courseController.studentDetails}" var="c"
+		styleClass="table" headerClass="table-header"
+		rowClasses="table-add-row, table-even-row">
+
+
+		<h:column>
+			<f:facet name="header">Course ID</f:facet>
+ 	  #{c.cID}
+	</h:column>
+	
+			<h:column>
+			<f:facet name="header">Course Name</f:facet>
+ 	  #{c.cName}
+	</h:column>
+	
+			<h:column>
+			<f:facet name="header">Course Duration</f:facet>
+ 	  #{c.duration}
+ 	  </h:column>
+ 	  
+		<h:column>
+			<f:facet name="header">Student Name</f:facet>
+ 	  #{c.name}
+	</h:column>
+
+		<h:column>
+			<f:facet name="header">Student Address</f:facet>
+ 	  #{c.address}
+	</h:column>
+
+
+
+
+	</h:dataTable>
+	<h:form>
+		<a><h:commandLink value="Home" action="index" /></a>
+	</h:form>
+</h:body>
+</html>
